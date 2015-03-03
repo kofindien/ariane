@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsAbonnement" value="name:idab;datatype:int,name:numcard;datatype:string,name:dvalidite;datatype:string" />
+</info>

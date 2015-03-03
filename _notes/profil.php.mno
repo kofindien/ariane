@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsProfil" value="name:idcl;datatype:int,name:civilite;datatype:string,name:nom;datatype:string,name:prenoms;datatype:string,name:cel1;datatype:string,name:cel2;datatype:string,name:cel3;datatype:string,name:code;datatype:string" />
+</info>

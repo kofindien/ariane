@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsMontants" value="name:mtr;datatype:real,name:mtfr;datatype:real,name:mois;datatype:int" />
+	<infoitem key="UD_rsTotJour" value="name:totJour;datatype:int" />
+	<infoitem key="UD_rsTotGlobal" value="name:totGlobal;datatype:int" />
+	<infoitem key="UD_rsMtJour" value="name:MtJour;datatype:real" />
+	<infoitem key="UD_rsMtGlobal" value="name:MtGlobal;datatype:real" />
+	<infoitem key="UD_rsMtFJour" value="name:MtFJour;datatype:real" />
+	<infoitem key="UD_rsMtFGlobal" value="name:MtFGlobal;datatype:real" />
+</info>

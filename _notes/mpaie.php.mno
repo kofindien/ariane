@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsServices" value="name:idab;datatype:int,name:idcl;datatype:int,name:ids;datatype:int,name:numcard;datatype:string,name:dvalidite;datatype:string,name:dateaj;datatype:timestamp" />
+</info>

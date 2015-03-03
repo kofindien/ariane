@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsTotaux" value="name:preleve;datatype:real,name:fraisr;datatype:real,name:timbre;datatype:real,name:recharge;datatype:real" />
+</info>

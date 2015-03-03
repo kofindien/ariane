@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="PageAccessControlMethod" value="dontUseAccessList" />
+	<infoitem key="MM_Session1" value="ariane_user_id" />
+	<infoitem key="MM_Session_Count" value="3" />
+	<infoitem key="MM_Session2" value="ariane_user_login" />
+	<infoitem key="MM_Session3" value="ariane_user_identite" />
+</info>

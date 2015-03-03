@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsRecharge" value="name:idr;datatype:int,name:montant;datatype:int,name:frais;datatype:int,name:numcard;datatype:string" />
+	<infoitem key="UD_rsTotaux" value="name:preleve;datatype:real,name:fraisr;datatype:real,name:timbre;datatype:real,name:recharge;datatype:real" />
+</info>

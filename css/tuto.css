@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+[class*="span"]{
+	background-color:lightgreen;
+	margin-bottom:10px;
+	border-radius:5px;
+	line-height:80px;
+	text-align:center;
+}
+[class*="span10"]{
+	background-color:green;
+}

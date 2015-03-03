@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsGroupe" value="name:idg;datatype:int,name:libg;datatype:string" />
+	<infoitem key="UD_rsUser" value="name:idc;datatype:int,name:idg;datatype:int,name:nom;datatype:string,name:prenoms;datatype:string,name:fonction;datatype:string,name:cel;datatype:string,name:email;datatype:string,name:motpasse;datatype:string,name:active;datatype:int,name:dateaj;datatype:timestamp,name:suppr;datatype:int" />
+</info>

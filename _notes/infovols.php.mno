@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_rsCompagny" value="name:idcp;datatype:int,name:compagnie;datatype:string,name:sup;datatype:int" />
+	<infoitem key="UD_rsProfil" value="name:idcl;datatype:int,name:civilite;datatype:string,name:nom;datatype:string,name:prenoms;datatype:string,name:cel;datatype:string" />
+	<infoitem key="UD_rsVol" value="name:idvol;datatype:int,name:numero;datatype:string,name:compagnie;datatype:string,name:destination;datatype:string,name:npays;datatype:string,name:ddate;datatype:date,name:heure;datatype:time" />
+</info>
