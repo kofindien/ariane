@@ -1,6 +1,8 @@
 <?php require_once('Connections/liaisondb.php'); ?>
 <?php require_once('bin/fonctions.php'); ?>
 <?php require_once('Class/PHPMailerAutoload.php'); ?>
+<?php require_once('sms/API.php'); ?>
+<?php $msg = "Demande transmise avec succès.Nous vous notifierons par SMS pour le paiement des frais de services par Orange  Money afin d'activer votre Alerte voyage."; ?>
 <?php
 if (!isset($_SESSION)) {
     session_name('arianefo');
@@ -55,6 +57,13 @@ if (!isset($_SESSION)) {
          ?>
             <div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button>La transmission de votre demande a échoué... Veuillez recommencer !</div>;
         <?php
+        }else{
+
+            /************** SENDING SMS **********************/
+            $sms = new API();
+            $sms->SendSMS("0e2db6ba","9514f30f",$cel,$msg);
+            /************** SENDING SMS END**********************/
+
         }
     }
 }

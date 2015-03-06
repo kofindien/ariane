@@ -1,21 +1,43 @@
 <?php require_once('../Connections/liaisondb.php'); ?>
-<?php require_once('../bin/fonctions.php'); ?>
+<?php require_once('../bin/fonctions.php');?>
+<?php require_once('../sms/API.php');?>
+<?php
+    $msg_Valider = "Votre demande d'alerte voyage est validée avec succès ! L'alerte commencera 4 heures avant votre vole. Bon voyage. L'équipe de Travel Star";
+    $msg_Annuler = "Votre demande d'alerte voyage à été annulée. Motif: ";
+?>
 <?php
 //Activation des Alertes voyages en fonction de l'ID
 if (isset($_GET['success'])){
-  $idAlerteVoyage = trim($_GET['idAlerteVoyage']);
+    $idAlerteVoyage = trim($_GET['idAlerteVoyage']);
+    mysql_select_db($database_liaisondb, $liaisondb);
+    $query_rsOperation = "SELECT alerts_voyages.telephone FROM alerts_voyages WHERE alerts_voyages.id = '$idAlerteVoyage' ";
+    $rsOperation = mysql_query($query_rsOperation, $liaisondb) or die(mysql_error());
+    $rsOperations = mysql_fetch_assoc($rsOperation);
+    $cel = $rsOperations['telephone'];
     $updateSQL = "UPDATE alerts_voyages SET alerts_voyages.statut='1' WHERE alerts_voyages.id = '$idAlerteVoyage' ";
-
     mysql_select_db($database_liaisondb, $liaisondb);
     $Result1 = mysql_query($updateSQL, $liaisondb) or die(mysql_error());
-
-    if ($Result1)  $alerte = '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>La demande d\'alert validée avec succès.</div>';
-    else $alerte =  '<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button>La validation a échouée veuillez reéssayer!</div>';
+    if ($Result1){
+        $alerte = '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>La demande d\'alert validée avec succès.</div>';
+        /************** SENDING SMS **********************/
+            $sms = new API();
+            $sms->SendSMS("0e2db6ba","9514f30f",$cel,$msg_Valider);
+        /************** SENDING SMS END**********************/
+    }else{
+        $alerte =  '<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button>La validation a échouée veuillez reéssayer!</div>';
+    }
 }
 
 if (isset($_GET['annuler'])){
     $idAlerteVoyage = trim($_GET['idAlerteVoyage']);
     $motif = trim($_GET['motif']);
+
+    //Obtenir le numero du client
+    mysql_select_db($database_liaisondb, $liaisondb);
+    $query_rsOperation = "SELECT alerts_voyages.telephone FROM alerts_voyages WHERE alerts_voyages.id = '$idAlerteVoyage' ";
+    $rsOperation = mysql_query($query_rsOperation, $liaisondb) or die(mysql_error());
+    $rsOperations = mysql_fetch_assoc($rsOperation);
+    $cel =  $rsOperations['telephone'];
     //Update du statut a 2 pour indiquer que l'occurrence est annulée
     $updateSQL = "UPDATE alerts_voyages SET alerts_voyages.statut='2' WHERE alerts_voyages.id = '$idAlerteVoyage' ";
     mysql_select_db($database_liaisondb, $liaisondb);
@@ -26,8 +48,15 @@ if (isset($_GET['annuler'])){
     mysql_select_db($database_liaisondb, $liaisondb);
     $Result2 = mysql_query($insertSQL, $liaisondb) or die(mysql_error());
      }
-    if ($Result2)  $alerte = '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>La demande d\'alert annulée avec succès.</div>';
-    else $alerte =  '<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button>La validation a échouée veuillez reéssayer!</div>';
+    if ($Result2){
+        /************** SENDING SMS **********************/
+        $sms = new API();
+        $sms->SendSMS("0e2db6ba","9514f30f",$cel,$msg_Annuler.'"'.$motif.'".Veuillez recharger votre compte.Equipe de Travel Star.');
+        /************** SENDING SMS END**********************/
+        $alerte = '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert">&times;</button>La demande d\'alert annulée avec succès.</div>';
+    }else{
+        $alerte =  '<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button>La validation a échouée veuillez reéssayer!</div>';
+    }
 }
 
 ?>
