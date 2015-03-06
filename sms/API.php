@@ -11,7 +11,7 @@ class API {
     //Fonction pr send les sms avec l'API de Nexmo
     public function SendSMS($key,$secret,$telephone,$message){
         /* ENVOI DE SMS */
-        include ( "../nexmo_api/NexmoMessage.php" );
+        include("nexmo_api/NexmoMessage.php");
         /**
          * To send a text message.
          *
